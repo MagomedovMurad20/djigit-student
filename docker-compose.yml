@@ -18,7 +18,6 @@ services:
             - db
         volumes:
             - .:/var/www/html:delegated
-            - ./docker/php/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
             - ./docker/php/conf.d/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
         networks:
             - djigit-net
@@ -52,6 +51,21 @@ services:
         networks:
             - djigit-net
 
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:latest
+        container_name: laravel-phpmyadmin
+        restart: unless-stopped
+        ports:
+            - "${FORWARD_PMA_PORT:-6080}:80"
+        environment:
+            - PMA_HOST=${DB_HOST}
+            - PMA_USER=${DB_USERNAME}
+            - PMA_PASSWORD=${DB_PASSWORD}
+            - UPLOAD_LIMIT=30M
+        depends_on:
+            - db
+        networks:
+            - djigit-net
 
 networks:
     djigit-net:

@@ -21,15 +21,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //Группа роутов для студентов
-Route::get('/student', [StudentController::class, 'index']);
-Route::post('/student/add', [StudentController::class, 'store']);
-Route::get('/student/{student}', [StudentController::class, 'show']);
-Route::post('/student/{student}', [StudentController::class, 'update']);
-Route::delete('/student/{student}', [StudentController::class, 'destroy']);
+Route::get('/students', [StudentController::class, 'index']);
+Route::post('/students/add', [StudentController::class, 'store']);
+Route::get('/students/{student}', [StudentController::class, 'show']);
+Route::post('/students/{student}', [StudentController::class, 'update']);
+Route::delete('/students/{student}', [StudentController::class, 'destroy']);
 
-//Группа роутов для классо
-Route::get('/grade', [GradeController::class, 'index']);
-Route::post('/grade/add', [GradeController::class, 'store']);
-Route::get('/grade/{student}', [GradeController::class, 'show']);
-Route::post('/grade/{student}', [GradeController::class, 'update']);
-Route::delete('/grade/{student}', [GradeController::class, 'destroy']);
+//Группа роутов для классов
+Route::get('/grades', [GradeController::class, 'index']);
+Route::post('/grades/add', [GradeController::class, 'store']);
+Route::get('/grades/{grade}', [GradeController::class, 'show']);
+Route::post('/grades/{grade}', [GradeController::class, 'update']);
+Route::delete('/grades/{grade}', [GradeController::class, 'destroy']);
+
+//Группа роутов для лекций
+Route::get('/lessons', [GradeController::class, 'index']);
+Route::post('/lessons/add', [GradeController::class, 'store']);
+Route::get('/lessons/{lesson}', [GradeController::class, 'show']);
+Route::post('/lessons/{lesson}', [GradeController::class, 'update']);
+Route::delete('/lessons/{lessons}', [GradeController::class, 'destroy']);

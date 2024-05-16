@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\GradeController;
+use App\Http\Controllers\LessonController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StudentController;
-use App\Http\Controllers\GradeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,8 +37,8 @@ Route::post('/grades/{grade}', [GradeController::class, 'update']);
 Route::delete('/grades/{grade}', [GradeController::class, 'destroy']);
 
 //Группа роутов для лекций
-Route::get('/lessons', [GradeController::class, 'index']);
-Route::post('/lessons/add', [GradeController::class, 'store']);
-Route::get('/lessons/{lesson}', [GradeController::class, 'show']);
-Route::post('/lessons/{lesson}', [GradeController::class, 'update']);
-Route::delete('/lessons/{lessons}', [GradeController::class, 'destroy']);
+Route::get('/lessons', [LessonController::class, 'index']);
+Route::post('/lessons/add', [LessonController::class, 'store']);
+Route::get('/lessons/{lesson}', [LessonController::class, 'show']);
+Route::post('/lessons/{lesson}', [LessonController::class, 'update']);
+Route::delete('/lessons/{lessons}', [LessonController::class, 'destroy']);

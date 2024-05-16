@@ -14,29 +14,31 @@ class GradeController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+            'Grades' => Grade::get()
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
+     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Grade $grade)
     {
-        //
+        $grade = new Grade;
+        $grade->name = $request->name;
+
+       $grade->save();
+
+        return response()->json([
+            'message' => 'success',
+            'status' => '200',
+            'data' => $grade,
+        ]);
     }
+
 
     /**
      * Display the specified resource.
@@ -46,19 +48,10 @@ class GradeController extends Controller
      */
     public function show(Grade $grade)
     {
-        //
+        return response()->json(['post' => $grade]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Grade  $grade
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Grade $grade)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -67,9 +60,17 @@ class GradeController extends Controller
      * @param  \App\Models\Grade  $grade
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Grade $grade)
+    public function update(Request $request, Gtade $grade)
     {
-        //
+        $grade->name = $request->name;
+
+        $grade->save();
+
+        return response()->json([
+            'message' => 'изменено',
+            'status' => '200',
+            'data' => $grade,
+        ]);
     }
 
     /**
@@ -80,6 +81,10 @@ class GradeController extends Controller
      */
     public function destroy(Grade $grade)
     {
-        //
+        $grade->delete();
+        return response()->json([
+            'message' => 'удалено',
+            'status' => '200',
+        ]);
     }
 }

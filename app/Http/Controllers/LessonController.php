@@ -14,18 +14,11 @@ class LessonController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+           'Lessons' => Lesson::get()
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +28,17 @@ class LessonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $lesson = new Lesson;
+        $lesson->theme = $request->theme;
+        $lesson->description = $request->description;
+
+       $lesson->save();
+
+        return response()->json([
+            'message' => 'success',
+            'status' => '200',
+            'data' => $lesson,
+        ]);
     }
 
     /**
@@ -46,19 +49,9 @@ class LessonController extends Controller
      */
     public function show(Lesson $lesson)
     {
-        //
+        return response()->json(['post' => $lesson]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Lesson  $lesson
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Lesson $lesson)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -69,7 +62,15 @@ class LessonController extends Controller
      */
     public function update(Request $request, Lesson $lesson)
     {
-        //
+        $lesson->theme = $request->theme;
+
+        $lesson->save();
+
+        return response()->json([
+            'message' => 'изменено',
+            'status' => '200',
+            'data' => $lesson,
+        ]);
     }
 
     /**
@@ -80,6 +81,10 @@ class LessonController extends Controller
      */
     public function destroy(Lesson $lesson)
     {
-        //
+        $lesson->delete();
+        return response()->json([
+            'message' => 'удалено',
+            'status' => '200',
+        ]);
     }
 }

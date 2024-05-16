@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->foreignId('student_id')->nullable()->constrained()->onDelete('set null');
+            $table->integer('student_id')->nullable()->constrained()->onDelete('set null');
         });
     }
 

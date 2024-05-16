@@ -18,34 +18,34 @@ class GradeSeeder extends Seeder
         DB::table('grades')->insert(
             [
                 [
-                    'name' => '1',
+                    'name' => 'first',
                 ],
                 [
-                    'name' => '2',
+                    'name' => 'second',
                 ],
                 [
-                    'name' => '3',
+                    'name' => 'third',
                 ],
                 [
-                    'name' => '4',
+                    'name' => 'forth',
                 ],
                 [
-                    'name' => '5',
+                    'name' => 'fifth',
                 ],
                 [
-                    'name' => '6',
+                    'name' => 'sixth',
                 ],
                 [
-                    'name' => '7',
+                    'name' => 'seventh',
                 ],
                 [
-                    'name' => '8',
+                    'name' => 'eighth',
                 ],
                 [
-                    'name' => '9',
+                    'name' => 'ninth',
                 ],
                 [
-                    'name' => '10',
+                    'name' => 'tenth',
                 ],
 
             ]

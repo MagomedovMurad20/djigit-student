@@ -30,8 +30,8 @@ class StudentController extends Controller
         $student = new Student;
         $student->name = $request->name;
         $student->email = $request->email;
-        $student->lesson = $request->lesson;
-        $student->grade = $request->grade;
+        $student->lesson_id = $request->lesson_id;
+        $student->grade_id = $request->grade_id;
 
        $student->save();
 
@@ -67,7 +67,8 @@ class StudentController extends Controller
     {
         $student->name = $request->name;
         $student->email = $request->email;
-        $student->lesson = $request->lesson;
+        $student->lesson_id = $request->lesson_id;
+        $student->grade_id = $request->grade_id;
         $student->email = $request->email;
 
         $student->save();

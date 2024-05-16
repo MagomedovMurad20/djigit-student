@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('email');
             $table->string('grade');
             $table->string('lesson');
+            $table->foreignId('lesson_id')->nullable()->constrained()->onDelete('set null');
+            $table->foreignId('grade_id')->nullable()->constrained()->onDelete('set null');
         });
     }
 

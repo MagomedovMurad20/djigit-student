@@ -19,12 +19,13 @@ class StudentController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
+     /**
+     * Store a newly created resource in storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function store()
     {
         $student = new Student;
         $student->name = $request->name;
@@ -32,7 +33,7 @@ class StudentController extends Controller
         $student->lesson = $request->lesson;
         $student->grade = $request->grade;
 
-        $student->save();
+       $student->save();
 
         return response()->json([
             'message' => 'success',

@@ -22,14 +22,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //Группа роутов для студентов
 Route::get('students', [StudentController::class, 'index']);
-Route::post('students/add', [StudentController::class, 'create']);
+Route::post('students/add', [StudentController::class, 'store']);
 Route::get('students/{student}', [StudentController::class, 'show']);
 Route::post('students/{student}', [StudentController::class, 'update']);
 Route::delete('students/{student}', [StudentController::class, 'destroy']);
 
 //Группа роутов для классов
 Route::get('students', [GradeController::class, 'index']);
-Route::post('students/add', [GradeController::class, 'create']);
+Route::post('students/add', [GradeController::class, 'store']);
 Route::get('students/{student}', [GradeController::class, 'show']);
 Route::post('students/{student}', [GradeController::class, 'update']);
 Route::delete('students/{student}', [GradeController::class, 'destroy']);

@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
 
 class StudentSeeder extends Seeder
 {
@@ -14,6 +16,16 @@ class StudentSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('students')->insert(
+            [
+                [
+                    'name' => 'Alex',
+                    'email' => 'alex@mail.ru',
+                    'grade' => '10',
+                    'lesson' => '4',
+                ],
+
+            ]
+        );
     }
 }

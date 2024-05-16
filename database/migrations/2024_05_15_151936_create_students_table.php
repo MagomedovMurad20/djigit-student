@@ -18,8 +18,6 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('email');
-            $table->string('grade');
-            $table->string('lesson');
             $table->integer('lesson_id')->nullable()->constrained()->onDelete('set null');
             $table->integer('grade_id')->nullable()->constrained()->onDelete('set null');
         });

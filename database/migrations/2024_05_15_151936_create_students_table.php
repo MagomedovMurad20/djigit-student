@@ -31,5 +31,11 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('students');
+        Schema::table('students', function (Blueprint $table) {
+            $table->dropColumn('grade_id');
+        });
+        Schema::table('students', function (Blueprint $table) {
+            $table->dropColumn('lesson_id');
+        });
     }
 };

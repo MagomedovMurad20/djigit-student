@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreStudentRequest;
+use App\Http\Requests\UpdateStudentRequest;
 use App\Models\Student;
 use App\Models\Grade;
 use App\Models\Lesson;
@@ -27,15 +28,10 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Student $student)
+    public function store(StoreStudentRequest $request, Student $student)
     {
-        $student = new Student;
-        $student->name = $request->name;
-        $student->email = $request->email;
-        $student->lesson_id = $request->lesson_id;
-        $student->grade_id = $request->grade_id;
+        $student = Student::create($request->validated());
 
-       $student->save();
 
         return response()->json([
             'message' => 'success',
@@ -65,15 +61,9 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(UpdateStudentRequest $request, Student $student)
     {
-        $student->name = $request->name;
-        $student->email = $request->email;
-        $student->lesson_id = $request->lesson_id;
-        $student->grade_id = $request->grade_id;
-        $student->email = $request->email;
-
-        $student->save();
+        $student->update($request->validated());
 
         return response()->json([
             'message' => 'изменено',

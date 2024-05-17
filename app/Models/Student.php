@@ -11,6 +11,14 @@ class Student extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'email',
+        'lesson_id',
+        'grade_id',
+    ];
+
+
     public function grade()
     {
         return $this->hasOne(Grade::class, 'id', 'grade_id');

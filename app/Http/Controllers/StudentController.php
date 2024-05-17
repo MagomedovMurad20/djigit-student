@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreStudentRequest;
 use App\Models\Student;
 use App\Models\Grade;
 use App\Models\Lesson;

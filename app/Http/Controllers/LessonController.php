@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreLessonRequest;
+use App\Http\Requests\UpdateLessonRequest;
 use App\Models\Lesson;
 use Illuminate\Http\Request;
 
@@ -26,13 +28,9 @@ class LessonController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreLessonRequest $request, Lesson $lesson)
     {
-        $lesson = new Lesson;
-        $lesson->theme = $request->theme;
-        $lesson->description = $request->description;
-
-       $lesson->save();
+        $lesson = Lesson::create($request->validated());
 
         return response()->json([
             'message' => 'success',
@@ -60,11 +58,9 @@ class LessonController extends Controller
      * @param  \App\Models\Lesson  $lesson
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Lesson $lesson)
+    public function update(UpdateLessonRequest $request, Lesson $lesson)
     {
-        $lesson->theme = $request->theme;
-
-        $lesson->save();
+        $lesson->update($request->validated());
 
         return response()->json([
             'message' => 'изменено',

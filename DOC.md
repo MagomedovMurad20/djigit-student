@@ -10,6 +10,14 @@
   "grade_id": 1
 }
 ```
+### Обновление студента `POST /api/students/{student}`
+``` JSON
+{
+  "name": "John Doe",
+  "lessons": [1, 2],
+  "grade": 2
+}
+```
 ### Получение данных одного студента `GET /api/students/{student}`
 ### Удаление студента `DELETE /api/students/{student}`
 
@@ -23,6 +31,13 @@
   "student_id": 1,
 }
 ```
+### Обновление лекций `POST /lessons/{id}`
+```JSON
+{
+  "theme": "JAVA",
+  "description": "ABOUT JAVA"
+}
+```
 ### Получение данных одной лекции `GET /api/lessons/{lesson}`
 ### Удаление лекции `DELETE /api/lessons/{lesson}`
 
@@ -33,6 +48,12 @@
 {
   "name": "second",
   "student_id": 1
+}
+```
+### Обновление класса `PUT /grades/{id}`
+```JSON
+{
+  "name": "third"
 }
 ```
 ### Получение данных одного класса `GET /api/grades/{grade}`

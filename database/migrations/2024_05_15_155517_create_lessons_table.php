@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('theme');
             $table->string('description');
+            $table->integer('student_id')->nullable()->constrained()->onDelete('set null');
         });
     }
 
@@ -29,5 +30,8 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('lessons');
+        Schema::table('lessons', function (Blueprint $table) {
+            $table->dropColumn('student_id');
+        });
     }
 };

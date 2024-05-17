@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\Grade;
+use App\Models\Lesson;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -14,9 +16,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return response()->json([
-            'Students' => Student::get()
-        ]);
+        $students = Student::with('lesson', 'grade')->get();
+        return response()->json($students);
     }
 
      /**

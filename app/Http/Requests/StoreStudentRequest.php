@@ -19,8 +19,8 @@ class StoreStudentRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
-            'email' => 'required|string',
+            'name' => 'required|string|max:100',
+            'email' => 'required|string|email|max:255|unique',
             'lesson_id' => 'integer',
             'grade_id' => 'integer',
         ];

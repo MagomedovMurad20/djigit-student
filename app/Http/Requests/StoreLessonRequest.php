@@ -24,8 +24,8 @@ class StoreLessonRequest extends FormRequest
     public function rules()
     {
         return [
-            'theme' => 'required|string',
-            'description' => 'string',
+            'theme' => 'required|string|min:3|max:255',
+            'description' => 'string|min:3|max:500',
             'student_id' => 'integer',
         ];
     }

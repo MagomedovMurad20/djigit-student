@@ -14,14 +14,13 @@ class Student extends Model
     protected $fillable = [
         'name',
         'email',
-        'lesson_id',
         'grade_id',
     ];
 
 
     public function grade()
     {
-        return $this->hasOne(Grade::class, 'id', 'grade_id');
+        return $this->hasOne(Grade::class);
     }
     public function lesson()
     {

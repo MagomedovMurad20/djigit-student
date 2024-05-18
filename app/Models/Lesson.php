@@ -13,7 +13,6 @@ class Lesson extends Model
     protected $fillable = [
         'theme' ,
         'description' ,
-        'student_id'
     ];
     public function student()
     {

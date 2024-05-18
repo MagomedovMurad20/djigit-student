@@ -21,13 +21,16 @@ class StudentSeeder extends Seeder
                 [
                     'name' => 'Alex',
                     'email' => 'alex@mail.ru',
+                    'grade_id' => 6,
                 ],
                 [
                     'name' => 'Oleg',
                     'email' => 'olegx@mail.ru',
+                    'grade_id' => 8,
                 ],
 
             ]
         );
     }
 }
+

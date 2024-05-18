@@ -16,7 +16,7 @@ class Lesson extends Model
     ];
     public function student()
     {
-        return $this->belongsToMany(Student::class, 'student_lesson');
+        return $this->belongsToMany(Student::class);
     }
 
 }

@@ -12,6 +12,14 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
+
+    protected $studentService;
+
+    public function __construct(StudentService $studentService)
+    {
+        $this->studentService = $studentService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -52,7 +60,8 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        return response()->json(['post' => $student]);
+        $studentData = $this->studentService->getStudentData($student);
+        return response()->json($studentData);
     }
 
 

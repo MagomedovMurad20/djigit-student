@@ -25,4 +25,23 @@ class StudentService
             ];
         });
     }
+
+    public function getStudentData(Student $student)
+    {
+        $student->load(['grade', 'lesson']);
+
+        return [
+            'name' => $student->name,
+            'email' => $student->email,
+            'grade' => [
+                'name' => $student->grade->name,
+            ],
+            'lesson' => $student->lesson->map(function ($lesson) {
+                return [
+                    'theme' => $lesson->theme,
+                    'description' => $lesson->description,
+                ];
+            }),
+        ];
+    }
 }

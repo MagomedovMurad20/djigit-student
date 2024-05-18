@@ -2,21 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\GradeService;
 use App\Models\Grade;
 use Illuminate\Http\Request;
 
 class GradeController extends Controller
 {
+    public function __construct(GradeService $gradeService)
+    {
+        $this->gradeService = $gradeService;
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index( GradeService $gradeService)
     {
-        return response()->json([
-            'Grades' => Grade::get()
-        ]);
+        $gradeData = $gradeService->getGradesData();
+        return response()->json($gradeData);
     }
 
      /**
@@ -48,7 +53,8 @@ class GradeController extends Controller
      */
     public function show(Grade $grade)
     {
-        return response()->json(['post' => $grade]);
+        $gradeData = $this->gradeService->getGradeData($grade);
+        return response()->json( $gradeData);
     }
 
 

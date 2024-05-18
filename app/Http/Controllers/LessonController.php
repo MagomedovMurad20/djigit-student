@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\LessonService;
 use App\Http\Requests\StoreLessonRequest;
 use App\Http\Requests\UpdateLessonRequest;
 use App\Models\Lesson;
@@ -9,16 +10,23 @@ use Illuminate\Http\Request;
 
 class LessonController extends Controller
 {
+
+    public function __construct(LessonService $lessonService)
+    {
+        $this->lessonService = $lessonService;
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(LessonService $lessonService)
     {
-        return response()->json([
-           'Lessons' => Lesson::get()
-        ]);
+        $lessonData = $lessonService->getLessonsData();
+
+        return response()->json($lessonData);
+
     }
 
 
@@ -47,7 +55,9 @@ class LessonController extends Controller
      */
     public function show(Lesson $lesson)
     {
-        return response()->json(['post' => $lesson]);
+        $lessonData = $this->lessonService->getlessonData($lesson);
+
+        return response()->json($lessonData);
     }
 
 

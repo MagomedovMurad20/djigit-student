@@ -20,7 +20,7 @@ class Student extends Model
 
     public function grade()
     {
-        return $this->hasOne(Grade::class);
+        return $this->hasOne(Grade::class, 'id', 'grade_id');
     }
     public function lesson()
     {

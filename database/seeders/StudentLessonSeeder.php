@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class StudentLessonSeeder extends Seeder
 {
@@ -14,7 +15,7 @@ class StudentLessonSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('lessons')->insert(
+        DB::table('student_lesson')->insert(
             [
                 [
                     'student_id' => '1',
@@ -23,10 +24,6 @@ class StudentLessonSeeder extends Seeder
                 [
                     'student_id' => '2',
                     'lesson_id' => '2',
-                ],
-                [
-                    'theme' => 'Algos',
-                    'description' => 'About algo',
                 ],
 
             ]

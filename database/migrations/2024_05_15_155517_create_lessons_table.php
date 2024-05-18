@@ -18,7 +18,6 @@ return new class extends Migration
             $table->timestamps();
             $table->string('theme');
             $table->string('description');
-            $table->integer('student_id')->nullable()->constrained()->onDelete('set null');
         });
     }
 

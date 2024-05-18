@@ -29,8 +29,6 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('lessons');
-        Schema::table('lessons', function (Blueprint $table) {
-            $table->dropColumn('student_id');
-        });
+
     }
 };

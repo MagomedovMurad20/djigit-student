@@ -18,7 +18,7 @@ class CreateStudentsTable extends Migration
             $table->foreign('grade_id')->references('id')->on('grades')->onDelete('set null');
         });
     }
-    
+
 
 
     public function down()

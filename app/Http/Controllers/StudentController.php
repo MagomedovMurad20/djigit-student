@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\StudentService;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Models\Student;
@@ -16,10 +17,12 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function index(StudentService $studentService)
     {
-        $students = Student::with('lesson', 'grade')->get();
-        return response()->json($students);
+        $studentsData = $studentService->getStudentsData();
+
+        return response()->json($studentsData);
     }
 
      /**

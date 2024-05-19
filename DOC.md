@@ -1,29 +1,29 @@
 # Примеры запросов
 ## Студенты
 ### Получение студентов: `GET /api/students`
-### Добавление нового студента: `POST /api/students`
+### Добавление нового студента: `POST /api/students/add?params`
 ``` json
 {
-  "name": "John Doe",
-  "email": "John Doe",
-  "lesson_id": [1, 2, 3],
-  "grade_id": 1
+  "name": "John Doe", //require
+  "email": "John Doe", //require
+  "lesson_ids": [1, 2, 3],
+  "grade_id": 1 //require
 }
 ```
-### Обновление студента `POST /api/students/{student}`
+### Обновление студента `POST /api/students/{id}?params`
 ``` JSON
 {
-  "name": "John Doe",
-  "lessons": [1, 2],
-  "grade": 2
+  "name": "John Doe", //require
+  "grade_id": 2,
+  "lesson_ids": [1, 2], //require
 }
 ```
-### Получение данных одного студента `GET /api/students/{student}`
-### Удаление студента `DELETE /api/students/{student}`
+### Получение данных одного студента `GET /api/students/{id}`
+### Удаление студента `DELETE /api/students/{id}`
 
 ## Лекции
 ### Получение лекций: `GET /api/lessons`
-### Добавление новой лекции: `POST /api/lessons`
+### Добавление новой лекции: `POST /api/lessons/add?params`
 ``` json
 {
   "theme": "PHP",
@@ -31,30 +31,29 @@
   "student_id": 1,
 }
 ```
-### Обновление лекций `POST /lessons/{id}`
+### Обновление лекций `POST /lessons/{id}?params`
 ```JSON
 {
   "theme": "JAVA",
   "description": "ABOUT JAVA"
 }
 ```
-### Получение данных одной лекции `GET /api/lessons/{lesson}`
-### Удаление лекции `DELETE /api/lessons/{lesson}`
+### Получение данных одной лекции `GET /api/lessons/{id}`
+### Удаление лекции `DELETE /api/lessons/{id}`
 
 ## Классы
 ### Получение классов: `GET /api/grades`
-### Добавление нового класса: `POST /api/grades`
+### Добавление нового класса: `POST /api/grades/add?params`
 ``` json
 {
   "name": "second",
-  "student_id": 1
 }
 ```
-### Обновление класса `PUT /grades/{id}`
+### Обновление класса `PUT /grades/{id}?params`
 ```JSON
 {
   "name": "third"
 }
 ```
-### Получение данных одного класса `GET /api/grades/{grade}`
+### Получение данных одного класса `GET /api/grades/{id}`
 ### Удаление класса `DELETE /api/grades/{grade}`

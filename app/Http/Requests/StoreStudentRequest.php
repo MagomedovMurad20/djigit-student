@@ -22,7 +22,8 @@ class StoreStudentRequest extends FormRequest
             'name' => 'required|string|max:100',
             'email' => 'required|string|email|max:255',
             'lesson_id' => 'integer',
-            'grade_id' => 'integer',
+            'grade_id' => 'required|integer',
+            'lesson_ids' => 'array',
         ];
     }
 }

@@ -44,4 +44,15 @@ class StudentService
             }),
         ];
     }
+
+    public function storeStudent(Request $request)
+    {
+        $student = Student::create($request->all());
+        $lessonIds = explode(',', $request->input('lesson_ids'));
+        foreach ($lessonIds as $lessonId) {
+            $student->lesson()->attach($lessonId);
+        }
+
+        return $student;
+    }
 }

@@ -5,8 +5,8 @@
 ``` json
 {
   "name": "John Doe", //require
-  "email": "John Doe", //require
-  "lesson_ids": [1, 2, 3],
+  "email": "j@doe.com", //require
+  "lesson_ids": [1, 2, 3], //без квадратных скобок
   "grade_id": 1 //require
 }
 ```
@@ -14,8 +14,9 @@
 ``` JSON
 {
   "name": "John Doe", //require
+  "name": "j@doe.com", //require
   "grade_id": 2,
-  "lesson_ids": [1, 2], //require
+  "lesson_ids": [1, 2], //без квадратных скобок
 }
 ```
 ### Получение данных одного студента `GET /api/students/{id}`
@@ -26,7 +27,7 @@
 ### Добавление новой лекции: `POST /api/lessons/add?params`
 ``` json
 {
-  "theme": "PHP",
+  "theme": "PHP", //require
   "email": "ABOUT PHP",
   "student_id": 1,
 }
@@ -34,7 +35,7 @@
 ### Обновление лекций `POST /lessons/{id}?params`
 ```JSON
 {
-  "theme": "JAVA",
+  "theme": "JAVA", //require
   "description": "ABOUT JAVA"
 }
 ```
@@ -46,13 +47,13 @@
 ### Добавление нового класса: `POST /api/grades/add?params`
 ``` json
 {
-  "name": "second",
+  "name": "second", //require
 }
 ```
 ### Обновление класса `PUT /grades/{id}?params`
 ```JSON
 {
-  "name": "third"
+  "name": "third" //require
 }
 ```
 ### Получение данных одного класса `GET /api/grades/{id}`

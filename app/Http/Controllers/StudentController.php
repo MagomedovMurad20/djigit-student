@@ -39,13 +39,11 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Student $student)
+    public function store(Request $request)
     {
-        $student = Student::create($request->all());
-        $lessonIds = explode(',', $request->input('lesson_ids'));
-        foreach ($lessonIds as $lessonId) {
-            $student->lesson()->attach($lessonId);
-        }        return response()->json([
+        $student = $this->studentService->storeStudent($request);
+
+        return response()->json([
             'message' => 'success',
             'status' => '200',
             'data' => $student,

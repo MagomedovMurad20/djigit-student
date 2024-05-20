@@ -1,6 +1,7 @@
 <?php
 namespace App\Services;
 
+use App\Http\Requests\StoreStudentRequest;
 use App\Models\Grade;
 use App\Models\Lesson;
 use App\Models\Student;
@@ -56,4 +57,17 @@ class StudentService
 
         return $student;
     }
+
+    public function storeStudentValidated(StoreStudentRequest $request)
+    {
+        $validated = $request->validated();
+        $lessonIds = $validated['lesson_ids'] ?? [];
+        $student = Student::create($validated);
+        if ($lessonIds) {
+            $student->lesson()->attach($lessonIds);
+        }
+
+        return $student;
+    }
+
 }

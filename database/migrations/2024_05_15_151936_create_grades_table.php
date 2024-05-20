@@ -10,7 +10,7 @@ class CreateGradesTable extends Migration
     {
         Schema::create('grades', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->index();
             $table->timestamps();
             $table->unsignedBigInteger('student_id')->nullable();
         });

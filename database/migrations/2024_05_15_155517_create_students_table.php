@@ -10,8 +10,8 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->string('name')->index();
+            $table->string('email')->unique()->index();
             $table->unsignedBigInteger('grade_id')->nullable();
             $table->timestamps();
 
